@@ -56,7 +56,7 @@
 												<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
 												<div class="dropdown-menu">
 													<a class="dropdown-item" href="<?php echo base_url('admin/Provider/edit/').$row->id; ?>">Edit</a>
-													<a class="dropdown-item" href="#" id="sa-params">Delete</a>
+													<a class="dropdown-item" href="<?php echo base_url('admin/Provider/delete/').$row->id; ?>" id="sa-params">Delete</a>
 												</div>
 											</div><!-- /btn-group --></td>
 									</tr>

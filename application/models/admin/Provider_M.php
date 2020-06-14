@@ -20,4 +20,14 @@ class Provider_M extends CI_Model{
 		$q = $this->db->where('id',$id)->get('providers')->result();
 		return $q;
 	}
+
+	public  function  update($pid,$data){
+		$q = $this->db->where('id',$pid)->update('providers',$data);
+		return $q;
+	}
+
+	public function delete($id){
+		$q = $this->db->where('id',$id)->update('providers',array('isdeleted'=>1));
+		return $q;
+	}
 }
