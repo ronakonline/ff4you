@@ -32,50 +32,58 @@
 					<div class="col-12">
 						<div class="card m-b-30">
 							<div class="card-body">
-								<form method="post" action="<?php echo base_url('admin/Provider/insert'); ?>" enctype="multipart/form-data">
+								<form method="post" action="<?php echo base_url('admin/Provider/update'); ?>" enctype="multipart/form-data">
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
 										<div class="col-sm-10">
-											<input class="form-control" type="text"  id="example-text-input" name="name" required>
+											<input class="form-control" type="text" value="<?php echo $provider[0]->name; ?>"  id="example-text-input" name="name" required>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
 										<div class="col-sm-10">
-											<textarea class="form-control" name="description" required></textarea>
+											<textarea class="form-control" name="description" required><?php echo $provider[0]->description; ?></textarea>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Price</label>
 										<div class="col-sm-10">
-											<input class="form-control" type="number"  id="example-text-input" name="price" required>
+											<input class="form-control" min="0" type="number"  value="<?php echo $provider[0]->price; ?>" id="example-text-input" name="price" required>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Thumbnail</label>
 										<div class="col-sm-10">
-											<input class="form-control" type="file"  id="example-text-input" name="thumbnail" required>
+											<input class="form-control" type="file"  id="example-text-input" name="thumbnail">
 										</div>
 									</div>
 									<div class="form-group row">
+										<label for="example-text-input" class="col-sm-2 col-form-label"></label>
+										<div class="col-sm-10">
+											<img src="<?php echo base_url('uploads/').$provider[0]->thumbnail; ?>" height="200px;" width="200px;">
+										</div>
+									</div>
+
+									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Address</label>
 										<div class="col-sm-10">
-											<textarea class="form-control" name="address" required></textarea>
+											<textarea class="form-control" name="address" required><?php echo $provider[0]->address; ?></textarea>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Latitude</label>
 										<div class="col-sm-10">
-											<input class="form-control" type="text"  id="example-text-input" name="lat" required>
+											<input class="form-control" type="text" value="<?php echo $provider[0]->lat; ?>" id="example-text-input" name="lat" required>
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="example-text-input" class="col-sm-2 col-form-label">Longitude</label>
 										<div class="col-sm-10">
-											<input class="form-control" type="text"  id="example-text-input" name="lng" required>
+											<input class="form-control" type="text" value="<?php echo $provider[0]->lng; ?>"  id="example-text-input" name="lng" required>
 										</div>
 									</div>
-									<button type="submit" class="btn btn-success ml-2">Add</button>
+									<input type="text" value="<?php echo $provider[0]->id; ?>" name="pid" hidden>
+									<button type="submit" class="btn btn-success ml-2">Update</button>
 								</form>
 							</div>
 						</div>
