@@ -50,7 +50,7 @@
 									<?php foreach ($providers as $row){ ?>
 									<tr>
 										<td><?php echo $row->name; ?></td>
-										<td><img src="<?php echo base_url('uploads/').$row->thumbnail;?>" height="100px;" width="100px;"></td>
+										<td><img src="<?php echo base_url().$row->thumbnail;?>" height="100px;" width="100px;"></td>
 										<td><?php echo $row->price; ?> Rs</td>
 										<td>  <div class="btn-group m-b-10">
 												<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>

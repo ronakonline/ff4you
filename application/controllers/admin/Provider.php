@@ -23,7 +23,7 @@ class Provider extends CI_Controller{
 	public function  insert(){
 		check_login_status();
 		$data = $this->input->post();
-		$data['thumbnail'] = time().$_FILES['thumbnail']['name'];
+		$data['thumbnail'] = 'uploads/'.time().$_FILES['thumbnail']['name'];
 		if(!move_uploaded_file($_FILES['thumbnail']['tmp_name'],'uploads/'.$data['thumbnail'])){
 			$_SESSION['error'] = "Error Uploading Image";
 			redirect(base_url('admin/Provider'));
@@ -48,7 +48,7 @@ class Provider extends CI_Controller{
 		check_login_status();
 		$data = $this->input->post();
 		if($_FILES['thumbnail']['error']==0){
-			$data['thumbnail'] = time().$_FILES['thumbnail']['name'];
+			$data['thumbnail'] = 'uploads/'.time().$_FILES['thumbnail']['name'];
 			if(!move_uploaded_file($_FILES['thumbnail']['tmp_name'],'uploads/'.$data['thumbnail'])){
 				$_SESSION['error'] = "Error Uploading Image";
 				redirect(base_url('admin/Provider/all'));
