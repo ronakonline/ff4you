@@ -137,7 +137,7 @@ $config['auth_source'] = '';
 | requests etc), set to TRUE;
 |
 */
-$config['allow_auth_and_keys'] = TRUE;
+$config['allow_auth_and_keys'] = FALSE;
 
 /*
 |--------------------------------------------------------------------------
@@ -414,7 +414,7 @@ $config['rest_enable_logging'] = FALSE;
 | table name to match e.g. my_logs
 |
 */
-$config['rest_logs_table'] = 'logs';
+$config['rest_logs_table'] = False;
 
 /*
 |--------------------------------------------------------------------------
