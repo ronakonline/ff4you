@@ -112,11 +112,26 @@ class Slot extends REST_Controller {
 	{
 
 		$input = $this->input->post();
+		$check = $this->db->where('id',$input['user_id'])->get('users')->result();
+		if(count($check)==0){
+			$this->response(['Invalid User Id.'], REST_Controller::HTTP_INTERNAL_SERVER_ERROR);
+			return Response;
+		}else{
+			$check1 = $this->db->where('id',$input['service_id'])->get('service')->result();
+			if(count($check1)==0){
+				$this->response(['Invalid Service Id.'], REST_Controller::HTTP_INTERNAL_SERVER_ERROR);
+				return Response;
+			}
+		}
+		$q = $this->db->where('user_id',$input['user_id'])->where('service_id',$input['service_id'])->get('slots')->result();
+		if(count($q)>0){
+			$this->response(['Slot Already Booked.'], REST_Controller::HTTP_OK);
+		}else {
+			$this->db->set($input);
+			$this->db->insert('slots');
 
-		$this->db->insert('slots',$input);
-
-		$this->response(['Slot Booked successfully.'], REST_Controller::HTTP_OK);
-
+			$this->response(['Slot Booked successfully.'], REST_Controller::HTTP_OK);
+		}
 	}
 
 

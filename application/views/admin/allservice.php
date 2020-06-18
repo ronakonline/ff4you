@@ -47,19 +47,20 @@
 
 									<tbody>
 
-									<?php foreach ($providers as $row){ ?>
-									<tr>
-										<td><?php echo $row->name; ?></td>
-										<td><img src="<?php echo base_url().$row->thumbnail;?>" height="100px;" width="100px;"></td>
-										<td><?php echo $row->price; ?> Rs</td>
-										<td>  <div class="btn-group m-b-10">
-												<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
-												<div class="dropdown-menu">
-													<a class="dropdown-item" href="<?php echo base_url('admin/Provider/edit/').$row->id; ?>">Edit</a>
-													<a class="dropdown-item" href="<?php echo base_url('admin/Provider/delete/').$row->id; ?>" id="sa-params">Delete</a>
-												</div>
-											</div><!-- /btn-group --></td>
-									</tr>
+									<?php foreach ($services as $row){ ?>
+										<tr>
+											<td><?php echo $row->name; ?></td>
+											<td><?php echo $row->date; ?></td>
+											<td><?php echo $row->from_time; ?></td>
+											<td><?php echo $row->to_time; ?></td>
+											<td>  <div class="btn-group m-b-10">
+													<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+													<div class="dropdown-menu">
+														<a class="dropdown-item" href="<?php echo base_url('admin/Service/edit/').$row->id; ?>">Edit</a>
+														<a class="dropdown-item" href="<?php echo base_url('admin/Service/delete/').$row->id; ?>" id="sa-params">Delete</a>
+													</div>
+												</div><!-- /btn-group --></td>
+										</tr>
 									<?php } ?>
 									</tbody>
 								</table>

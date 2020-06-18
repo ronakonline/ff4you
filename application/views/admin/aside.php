@@ -47,8 +47,8 @@
 					<li class="has_sub">
 						<a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-food"></i> <span> Service </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
 						<ul class="list-unstyled">
-							<li><a href="#">Add Service</a></li>
-							<li><a href="#">All Services</a></li>
+							<li><a href="<?php echo base_url('admin/Service'); ?>">Add Service</a></li>
+							<li><a href="<?php echo base_url('admin/Service/all'); ?>">All Services</a></li>
 						</ul>
 					</li>
 					<li>
