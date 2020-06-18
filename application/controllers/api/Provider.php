@@ -108,7 +108,7 @@ class Provider extends REST_Controller {
 
 		if(!empty($id)){
 
-			$data = $this->db->where('provider_id',$id)->where('date',date('Y/m/d'))->get('service')->result();
+			$data = $this->db->where('provider_id',$id)->where('date',date('Y-m-d'))->get('service')->result();
 			$this->response($data, REST_Controller::HTTP_OK);
 		}else{
 
