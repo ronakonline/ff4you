@@ -99,9 +99,9 @@ class User extends REST_Controller {
 				$this->email->to($input['email']);
 
 
-				$this->email->subject('Email Test');
+				$this->email->subject('Email Verification');
 				$input['verification_code'] = mt_rand(100000, 999999);
-				$this->email->message($input['verification_code']);
+				$this->email->message($this->load->view('templates/otp-template',$input,true));
 
 
 				$result = $this->email->send();

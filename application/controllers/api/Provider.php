@@ -80,13 +80,16 @@ class Provider extends REST_Controller {
 		}else {
 
 			//$data = $this->db->get("providers")->result();
-			$data = $this->db->query('SELECT *, SQRT(
+//			$data = $this->db->query('SELECT *, SQRT(
+//
+//        POW(69.1 * (lat - '.$lat.'), 2) +
+//
+//        POW(69.1 * ('.$lng.' - lng) * COS(lat / 57.3), 2)) AS distance
+//
+//    FROM providers HAVING distance < 25 ORDER BY distance')->result();
 
-        POW(69.1 * (lat - '.$lat.'), 2) +
-
-        POW(69.1 * ('.$lng.' - lng) * COS(lat / 57.3), 2)) AS distance
-
-    FROM providers HAVING distance < 25 ORDER BY distance')->result();
+			$qry = "SELECT *,(((acos(sin((".$lat."*pi()/180)) * sin((providers.lat*pi()/180))+cos((".$lat."*pi()/180)) * cos((providers.lng*pi()/180)) * cos(((".$lng."- providers.lng)*pi()/180))))*180/pi())*60*1.1515*1.609344) as distance FROM providers ";
+			$data = $this->db->query($qry)->result();
 			$this->response($data, REST_Controller::HTTP_OK);
 		}
 	}
@@ -117,6 +120,8 @@ class Provider extends REST_Controller {
 		}
 
 	}
+
+
 
 
 

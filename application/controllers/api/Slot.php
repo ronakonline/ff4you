@@ -46,7 +46,7 @@ class Slot extends REST_Controller {
 
 		if(!empty($id)){
 
-			$this->db->select('*');
+			$this->db->select('slots.created_at as booking_date,providers.*,service.*');
 			$this->db->from('slots')->where('user_id',$id);
 			$this->db->join('service','slots.service_id=service.id');
 			$this->db->join('providers','service.provider_id=providers.id');
