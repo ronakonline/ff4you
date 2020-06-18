@@ -40,7 +40,7 @@ class Provider extends REST_Controller {
 
 	 */
 
-	public function index_get($id = 0)
+	public function index_get($id = 0,$lat=0,$lng=0)
 
 	{
 
@@ -48,7 +48,14 @@ class Provider extends REST_Controller {
 
 			$data = $this->db->get_where("providers", ['id' => $id])->row_array();
 
-		}else{
+		}elseif(!empty($lat) && !empty($lng)){
+			$qry = "SELECT *,(((acos(sin((".$lat."*pi()/180)) * sin((providers.lat*pi()/180))+cos((".$lat."*pi()/180)) * cos((providers.lng*pi()/180)) * cos(((".$lng."- providers.lng)*pi()/180))))*180/pi())*60*1.1515*1.609344) as distance FROM providers ";
+			$data = $this->db->query($qry)->result();
+		}elseif(!empty($id) && !empty($lng) && !empty($lat)){
+			$qry = "SELECT *,(((acos(sin((".$lat."*pi()/180)) * sin((providers.lat*pi()/180))+cos((".$lat."*pi()/180)) * cos((providers.lng*pi()/180)) * cos(((".$lng."- providers.lng)*pi()/180))))*180/pi())*60*1.1515*1.609344) as distance FROM providers where providers.id=".$id;
+			$data = $this->db->query($qry)->result();
+		}
+		else{
 
 			$data = $this->db->get("providers")->result();
 
